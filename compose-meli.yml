@@ -1,0 +1,18 @@
+version: '3'
+
+services: 
+  sql-server:
+    build: ./DatabaseConfig
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "${SQL_SERVER_PASS}"
+      ACCEPT_EULA: "Y"
+  token-service:
+    build: ./TokenRefreshService
+    environment:
+      CLIENT_ID: "${CLIENT_ID}"
+      CLIENT_SECRET: "${CLIENT_SECRET}"
+      TOKEN_SERVICE_PORT: "${TOKEN_SERVICE_PORT}"
+    ports:
+      - "5500:5000"

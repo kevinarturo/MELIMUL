@@ -20,9 +20,9 @@ docker-compose -f compose-airflow.yml up -d
 :: Levantar la arquitectura del proyecto de MELI
 
 echo "Creando e inicializando proyecto"
-docker-compose -f compose-meli.yml build --no-cache
+docker-compose -f compose-meli.yml build 
 
 echo "Montando proyecto..."
 docker-compose -f compose-meli.yml up -d
 
-echo "Proyecto Montado Airflow: http://localhost:8080 SQLServer: localhost:1433"
+echo "Proyecto Montado Airflow: http://localhost:8080 SQLServer: localhost:1433 APP MELI: https://localhost:5500"

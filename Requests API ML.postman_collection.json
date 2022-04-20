@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "69148b06-b4e4-421a-90e8-c2f34cb2994b",
+		"name": "Requests API ML",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://auth.mercadolibre.com.mx/authorization?response_type=code&redirect_uri=https://localhost:5000&client_id=4924616686163496",
+					"protocol": "https",
+					"host": [
+						"auth",
+						"mercadolibre",
+						"com",
+						"mx"
+					],
+					"path": [
+						"authorization"
+					],
+					"query": [
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://localhost:5000"
+						},
+						{
+							"key": "client_id",
+							"value": "4924616686163496"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChangeCodeForAccessToken",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "4924616686163496",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "oIB4VnGqFhBFcPQsV3WdDHcEUVaJiIQk",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "TG-625fa8ff38425c001d179ad8-62778508",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://localhost:5000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.mercadolibre.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"mercadolibre",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RefreshToken",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "content-type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "4924616686163496",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "oIB4VnGqFhBFcPQsV3WdDHcEUVaJiIQk",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "TG-625fa92e738aaa001cc7188c-62778508",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.mercadolibre.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"mercadolibre",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FirstTestRequest",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "APP_USR-4924616686163496-042018-4beda8ea6e02ef0c23d0b56b96368aff-62778508",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer $ACCESS_TOKEN",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://api.mercadolibre.com/users/527927603",
+					"protocol": "https",
+					"host": [
+						"api",
+						"mercadolibre",
+						"com"
+					],
+					"path": [
+						"users",
+						"527927603"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetItemsBySearch",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer APP_USR-4924616686163496-041901-10ecb4f6904a6b39f90fe2d516c13e62-62778508"
+					}
+				],
+				"url": {
+					"raw": "https://api.mercadolibre.com/sites/MLM/search?q=Laptop",
+					"protocol": "https",
+					"host": [
+						"api",
+						"mercadolibre",
+						"com"
+					],
+					"path": [
+						"sites",
+						"MLM",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Laptop"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetItemsBySeller",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer APP_USR-4924616686163496-041901-10ecb4f6904a6b39f90fe2d516c13e62-62778508"
+					}
+				],
+				"url": {
+					"raw": "https://api.mercadolibre.com/sites/MLM/search?seller_id=527927603",
+					"protocol": "https",
+					"host": [
+						"api",
+						"mercadolibre",
+						"com"
+					],
+					"path": [
+						"sites",
+						"MLM",
+						"search"
+					],
+					"query": [
+						{
+							"key": "seller_id",
+							"value": "527927603"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "APP_USR-4924616686163496-042018-4beda8ea6e02ef0c23d0b56b96368aff-62778508",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

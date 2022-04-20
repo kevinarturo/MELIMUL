@@ -1,0 +1,4 @@
+Flask==2.1.1
+pyOpenSSL==22.0.0
+requests==2.27.1
+
